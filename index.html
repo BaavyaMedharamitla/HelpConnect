@@ -3,9 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HelpConnect | Smart Human Support</title>
+
+<title>HelpConnect</title>
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<circle cx='50' cy='50' r='45' fill='%234f8cff'/>
+<path d='M30 50 Q50 20 70 50 Q50 80 30 50' fill='white'/>
+</svg>">
+
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="dark">
 
 <!-- Animated Background -->
@@ -18,8 +27,14 @@
 
 <!-- NAVBAR -->
 <nav class="navbar">
+
     <div class="logo-box">
-        <div class="logo-symbol"></div>
+
+        <div class="logo-symbol">
+            <div class="logo-inner"></div>
+            <div class="logo-pulse"></div>
+        </div>
+
         <span>HelpConnect</span>
     </div>
 
@@ -33,63 +48,94 @@
     <button id="themeToggle" class="theme-toggle">
         <div class="toggle-circle"></div>
     </button>
+
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
 
     <div class="hero-left">
-        <span class="tagline">REAL-TIME HUMAN SUPPORT NETWORK</span>
+
+        <span class="tagline">
+            FUTURE OF HUMANITARIAN RESPONSE
+        </span>
 
         <h1>
-            Human Help.<br>
-            Smartly Connected.
+            Smart Human Support.<br>
+            Instantly Connected.
         </h1>
 
         <p>
-            Instantly connect people in urgent need with
-            verified volunteers through intelligent matching.
+            HelpConnect is an intelligent real-time assistance platform
+            connecting people in urgent need with verified volunteers
+            through smart location-based matching.
         </p>
 
         <div class="hero-buttons">
-            <button class="primary-btn" onclick="scrollToRequest()">Request Help</button>
-            <button class="secondary-btn">Explore Platform</button>
+            <button class="primary-btn" onclick="scrollToRequest()">
+                Request Help
+            </button>
+
+            <button class="secondary-btn" onclick="scrollToFeatures()">
+                Explore Platform
+            </button>
         </div>
 
         <div class="hero-stats">
-            <div>
+
+            <div class="stat-box">
                 <h2>12K+</h2>
                 <span>Requests Solved</span>
             </div>
-            <div>
+
+            <div class="stat-box">
                 <h2>1.8K+</h2>
                 <span>Volunteers</span>
             </div>
-            <div>
+
+            <div class="stat-box">
                 <h2>32</h2>
-                <span>Cities</span>
+                <span>Cities Connected</span>
             </div>
+
         </div>
+
     </div>
 
+    <!-- LIVE DASHBOARD -->
     <div class="hero-right">
+
         <div class="live-dashboard">
-            <div class="status-bar"></div>
+
+            <div class="dashboard-top">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+            </div>
 
             <div class="dashboard-card pulse-card">
-                Active Response Matching
+                <h3>Live Matching Active</h3>
+                <p>Nearest responders being assigned</p>
             </div>
 
             <div class="dashboard-map">
+
                 <div class="node n1"></div>
                 <div class="node n2"></div>
                 <div class="node n3"></div>
+
+                <div class="line l1"></div>
+                <div class="line l2"></div>
+
             </div>
 
             <div class="dashboard-card eta-card">
-                ETA: 4 mins
+                <h3>Response ETA</h3>
+                <p>04 mins</p>
             </div>
+
         </div>
+
     </div>
 
 </section>
@@ -97,82 +143,134 @@
 <!-- FEATURES -->
 <section class="features" id="features">
 
-<h2>Why HelpConnect</h2>
+    <h2>Platform Capabilities</h2>
 
-<div class="feature-grid">
+    <div class="feature-grid">
 
-<div class="feature-card">
-<h3>Instant Matching</h3>
-<p>Smart location-based volunteer assignment.</p>
-</div>
+        <div class="feature-card">
+            <h3>Smart Matching</h3>
+            <p>
+                AI-driven volunteer allocation based on urgency,
+                location and response capacity.
+            </p>
+        </div>
 
-<div class="feature-card">
-<h3>Live Tracking</h3>
-<p>Track responder status in real time.</p>
-</div>
+        <div class="feature-card">
+            <h3>Live Tracking</h3>
+            <p>
+                Monitor responder movement and estimated arrival
+                with real-time updates.
+            </p>
+        </div>
 
-<div class="feature-card">
-<h3>Secure Support</h3>
-<p>Verified trusted volunteer network.</p>
-</div>
+        <div class="feature-card">
+            <h3>Verified Network</h3>
+            <p>
+                Secure, authenticated and trustworthy volunteer ecosystem.
+            </p>
+        </div>
 
-</div>
+    </div>
+
 </section>
 
-<!-- REQUEST FORM -->
+<!-- REQUEST -->
 <section class="request-section" id="request">
 
-<div class="request-card">
+    <div class="request-card">
 
-<h2>Submit Request</h2>
+        <h2>Submit Support Request</h2>
 
-<form id="helpForm">
+        <form id="helpForm">
 
-<input type="text" placeholder="Full Name" required>
-<input type="email" placeholder="Email Address" required>
+            <input type="text" placeholder="Full Name" required>
 
-<select required>
-<option>Select Support Type</option>
-<option>Medical</option>
-<option>Food</option>
-<option>Transport</option>
-<option>Shelter</option>
-</select>
+            <input type="email" placeholder="Email Address" required>
 
-<textarea rows="5" placeholder="Describe your requirement"></textarea>
+            <select required>
+                <option value="">Choose Support Type</option>
+                <option>Medical Emergency</option>
+                <option>Food Assistance</option>
+                <option>Transport Support</option>
+                <option>Shelter Help</option>
+            </select>
 
-<button type="submit" class="submit-btn">
-Submit Request
-</button>
+            <textarea rows="5"
+            placeholder="Describe your requirement..."
+            required></textarea>
 
-</form>
+            <button type="submit" class="submit-btn">
+                Submit Request
+            </button>
 
-<div id="notification"></div>
+        </form>
 
-</div>
+        <div id="notification"></div>
+
+    </div>
 
 </section>
 
 <!-- VOLUNTEERS -->
 <section class="volunteer-section" id="volunteers">
 
-<h2>Active Volunteers</h2>
+    <h2>Active Volunteer Network</h2>
 
-<div class="volunteer-grid" id="volunteerGrid"></div>
+    <div class="volunteer-grid" id="volunteerGrid"></div>
+
+</section>
+
+<!-- IMPACT -->
+<section class="features">
+
+    <h2>Community Impact</h2>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <h3>98.7%</h3>
+            <p>Successful support completion rate</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>4.2 mins</h3>
+            <p>Average response assignment time</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>24/7</h3>
+            <p>Platform availability</p>
+        </div>
+
+    </div>
 
 </section>
 
 <!-- FOOTER -->
 <footer>
-<div class="footer-logo">
-<div class="logo-symbol"></div>
-<span>HelpConnect</span>
-</div>
 
-<p>Smart humanitarian assistance infrastructure</p>
-<p>© 2026 Baavya Medharamitla</p>
+    <div class="footer-logo">
+
+        <div class="logo-symbol">
+            <div class="logo-inner"></div>
+            <div class="logo-pulse"></div>
+        </div>
+
+        <span>HelpConnect</span>
+
+    </div>
+
+    <p>
+        Smart humanitarian response infrastructure
+    </p>
+
+    <p>
+        © 2026 Baavya Medharamitla
+    </p>
+
 </footer>
 
 <script src="script.js"></script>
+
 </body>
 </html>
