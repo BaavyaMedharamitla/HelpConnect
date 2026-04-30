@@ -1,68 +1,189 @@
+// ---------------- THEME TOGGLE ----------------
+
+const body = document.body;
+const toggle = document.getElementById("themeToggle");
+
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme) {
+    body.className = savedTheme;
+} else {
+    body.className = "dark";
+}
+
+toggle.addEventListener("click", () => {
+    if (body.classList.contains("dark")) {
+        body.classList.remove("dark");
+        body.classList.add("light");
+        localStorage.setItem("theme", "light");
+    } else {
+        body.classList.remove("light");
+        body.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+    }
+});
+
+
+// ---------------- VOLUNTEERS ----------------
+
 const volunteers = [
-  { name: "Anjali S", location: "Chennai", skill: "Medical Aid" },
-  { name: "Ravi K", location: "Bangalore", skill: "Food Delivery" },
-  { name: "Priya M", location: "Chennai", skill: "Shelter Support" },
-  { name: "Arun J", location: "Bangalore", skill: "Transport Help" }
+    {
+        name: "Aarav Sharma",
+        role: "Medical Responder",
+        city: "Chennai"
+    },
+    {
+        name: "Priya Nair",
+        role: "Food Assistance",
+        city: "Bangalore"
+    },
+    {
+        name: "Rahul Menon",
+        role: "Transport Support",
+        city: "Hyderabad"
+    },
+    {
+        name: "Meera Iyer",
+        role: "Shelter Coordination",
+        city: "Chennai"
+    },
+    {
+        name: "Arjun Patel",
+        role: "Emergency Logistics",
+        city: "Mumbai"
+    },
+    {
+        name: "Sneha Verma",
+        role: "Rapid Response",
+        city: "Delhi"
+    }
 ];
 
-const grid = document.getElementById("volunteerGrid");
-const filter = document.getElementById("locationFilter");
+const volunteerGrid = document.getElementById("volunteerGrid");
 
-function renderVolunteers(data) {
-  grid.innerHTML = "";
+function renderVolunteers() {
+    volunteerGrid.innerHTML = "";
 
-  data.forEach(v => {
-    grid.innerHTML += `
-      <div class="volunteer-card">
-        <h3>${v.name}</h3>
-        <p>📍 ${v.location}</p>
-        <p>🛠 ${v.skill}</p>
-      </div>
+    volunteers.forEach((volunteer, index) => {
+        const card = document.createElement("div");
+
+        card.classList.add("solution-card");
+        card.style.animationDelay = `${index * 0.15}s`;
+
+        card.innerHTML = `
+            <h3>${volunteer.name}</h3>
+            <p>${volunteer.role}</p>
+            <span>${volunteer.city}</span>
+        `;
+
+        volunteerGrid.appendChild(card);
+    });
+}
+
+renderVolunteers();
+
+
+// ---------------- FORM ----------------
+
+const helpForm = document.getElementById("helpForm");
+const formMsg = document.getElementById("formMsg");
+
+helpForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    formMsg.textContent = "Request submitted successfully. A responder is being matched.";
+    formMsg.style.color = "#10b981";
+    formMsg.style.marginTop = "14px";
+
+    helpForm.reset();
+
+    setTimeout(() => {
+        formMsg.textContent = "";
+    }, 5000);
+});
+
+
+// ---------------- SCROLL REVEAL ----------------
+
+const revealElements = document.querySelectorAll(
+    ".solution-card, .impact-box, .request-panel, .dashboard-shell"
+);
+
+function revealOnScroll() {
+    revealElements.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+
+        if (top < window.innerHeight - 80) {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+        }
+    });
+}
+
+revealElements.forEach((el) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(50px)";
+    el.style.transition = "all 0.8s ease";
+});
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+
+// ---------------- PARALLAX ----------------
+
+document.addEventListener("mousemove", (e) => {
+    const orbs = document.querySelectorAll(".orb");
+
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+
+    orbs.forEach((orb, index) => {
+        const moveX = (x - 0.5) * (index + 1) * 30;
+        const moveY = (y - 0.5) * (index + 1) * 30;
+
+        orb.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+});
+
+
+// ---------------- HERO FLOAT ----------------
+
+const dashboard = document.querySelector(".dashboard-shell");
+
+document.addEventListener("mousemove", (e) => {
+    const x = (window.innerWidth / 2 - e.pageX) / 40;
+    const y = (window.innerHeight / 2 - e.pageY) / 40;
+
+    dashboard.style.transform = `
+        rotateY(${x}deg)
+        rotateX(${-y}deg)
     `;
-  });
-}
-
-filter.addEventListener("change", () => {
-  const selected = filter.value;
-
-  if(selected === "all"){
-    renderVolunteers(volunteers);
-  } else {
-    renderVolunteers(
-      volunteers.filter(v => v.location === selected)
-    );
-  }
 });
 
-document.getElementById("helpForm").addEventListener("submit", function(e){
-  e.preventDefault();
 
-  document.getElementById("formMsg").innerHTML =
-    "✅ Request submitted successfully!";
+// ---------------- BUTTON INTERACTIONS ----------------
 
-  this.reset();
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(button => {
+    button.addEventListener("mouseenter", () => {
+        button.style.transform = "scale(1.06)";
+    });
+
+    button.addEventListener("mouseleave", () => {
+        button.style.transform = "scale(1)";
+    });
 });
 
-function animateCounter(id, target){
-  let count = 0;
-  const element = document.getElementById(id);
 
-  const interval = setInterval(() => {
-    count += Math.ceil(target / 80);
+// ---------------- LOADER EFFECT ----------------
 
-    if(count >= target){
-      count = target;
-      clearInterval(interval);
-    }
+window.addEventListener("load", () => {
+    document.body.style.opacity = "0";
 
-    element.textContent = count;
-  }, 30);
-}
-
-window.onload = () => {
-  renderVolunteers(volunteers);
-
-  animateCounter("requests", 1250);
-  animateCounter("volunteersCount", 420);
-  animateCounter("cities", 18);
-};
+    setTimeout(() => {
+        document.body.style.transition = "opacity 1s ease";
+        document.body.style.opacity = "1";
+    }, 100);
+});
