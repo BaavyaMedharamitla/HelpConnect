@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="HelpConnect - Task 5 Final Optimized Web App" />
+  <title>HelpConnect | Task 5</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="hero">
+    <h1>🤝 HelpConnect</h1>
+    <p>Connecting those in need with those who care.</p>
+    <a href="#request" class="cta">📬 Submit a Request</a>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- Help Request Form -->
+    <section id="request" class="section">
+      <h2>📬 Submit a Help Request</h2>
+      <form id="helpForm">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Describe your need..." rows="4" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+      <p id="formMsg" class="msg"></p>
+    </section>
+
+    <!-- Volunteer Directory -->
+    <section class="section">
+      <h2>🦸 Meet the Volunteers</h2>
+      <div class="controls">
+        <label for="locationFilter">Filter by Location:</label>
+        <select id="locationFilter" onchange="filterVolunteers()">
+          <option value="all">All Locations</option>
+          <option value="chennai">Chennai</option>
+          <option value="bangalore">Bangalore</option>
+        </select>
+      </div>
+      <div id="volunteerGrid" class="grid"></div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 HelpConnect | Built by Baavya Medharamitla</p>
+  </footer>
+
+</body>
+</html>
