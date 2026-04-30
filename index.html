@@ -1,82 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HelpConnect | Connecting Humanity</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpConnect | Intelligent Community Response</title>
+    <meta name="description" content="A real-time humanitarian assistance platform connecting people to verified support instantly.">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark">
 
-<div class="bg-animation"></div>
+    <!-- Dynamic Background -->
+    <div class="background-system">
+        <div class="gradient-layer"></div>
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+        <div class="mesh-grid"></div>
+    </div>
 
-<nav class="navbar">
-  <div class="logo">🤝 HelpConnect</div>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#request">Request Help</a></li>
-    <li><a href="#volunteers">Volunteers</a></li>
-  </ul>
-</nav>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="brand">
+            <div class="brand-logo">
+                <div class="logo-ring"></div>
+                <div class="logo-core"></div>
+            </div>
+            <span>HelpConnect</span>
+        </div>
 
-<header class="hero">
-  <div class="hero-content">
-    <h1>Connecting People. Delivering Hope.</h1>
-    <p>Bridging communities through instant support and volunteer action.</p>
-    <a href="#request" class="btn">Get Help Now</a>
-  </div>
-</header>
+        <nav>
+            <a href="#solutions">Solutions</a>
+            <a href="#network">Network</a>
+            <a href="#request">Request</a>
+            <a href="#impact">Impact</a>
+        </nav>
 
-<section class="stats">
-  <div class="stat-card">
-    <h2 id="requests">0</h2>
-    <p>Requests Solved</p>
-  </div>
-  <div class="stat-card">
-    <h2 id="volunteersCount">0</h2>
-    <p>Active Volunteers</p>
-  </div>
-  <div class="stat-card">
-    <h2 id="cities">0</h2>
-    <p>Cities Connected</p>
-  </div>
-</section>
+        <div class="nav-actions">
+            <button id="themeToggle" class="theme-toggle">
+                <span></span>
+            </button>
+            <button class="nav-cta">Join Network</button>
+        </div>
+    </header>
 
-<section id="about" class="section">
-  <h2>Why HelpConnect?</h2>
-  <p>
-    HelpConnect empowers people to seek immediate support while connecting
-    them to volunteers ready to help.
-  </p>
-</section>
+    <!-- Hero -->
+    <section class="hero">
 
-<section id="request" class="section glass">
-  <h2>Submit a Help Request</h2>
-  <form id="helpForm">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea placeholder="Describe your need..." required></textarea>
-    <button type="submit">Submit Request</button>
-  </form>
-  <p id="formMsg"></p>
-</section>
+        <div class="hero-content">
+            <div class="hero-badge">
+                VERIFIED COMMUNITY RESPONSE PLATFORM
+            </div>
 
-<section id="volunteers" class="section">
-  <h2>Meet Our Volunteers</h2>
+            <h1>
+                Smart Humanitarian Assistance.<br>
+                Delivered in Real Time.
+            </h1>
 
-  <select id="locationFilter">
-    <option value="all">All Locations</option>
-    <option value="Chennai">Chennai</option>
-    <option value="Bangalore">Bangalore</option>
-  </select>
+            <p>
+                HelpConnect intelligently connects people in urgent need
+                with trusted volunteers and response networks using
+                location-aware smart matching.
+            </p>
 
-  <div id="volunteerGrid" class="grid"></div>
-</section>
+            <div class="hero-buttons">
+                <button class="primary-btn">Request Assistance</button>
+                <button class="secondary-btn">Explore Platform</button>
+            </div>
 
-<footer>
-  <p>© 2026 HelpConnect | Built by Baavya Medharamitla</p>
-</footer>
+            <div class="hero-metrics">
+                <div>
+                    <h2>12K+</h2>
+                    <span>Requests Resolved</span>
+                </div>
+                <div>
+                    <h2>1.8K+</h2>
+                    <span>Active Responders</span>
+                </div>
+                <div>
+                    <h2>32</h2>
+                    <span>Connected Cities</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Interface Preview -->
+        <div class="hero-visual">
+
+            <div class="dashboard-shell">
+
+                <div class="dashboard-topbar">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+
+                <div class="dashboard-main">
+
+                    <div class="live-status-card">
+                        <h4>Live Assistance Matching</h4>
+                        <div class="pulse-indicator"></div>
+                    </div>
+
+                    <div class="map-preview">
+                        <div class="map-node node1"></div>
+                        <div class="map-node node2"></div>
+                        <div class="map-node node3"></div>
+                        <div class="map-lines"></div>
+                    </div>
+
+                    <div class="response-card">
+                        <h5>Nearest Responder Assigned</h5>
+                        <p>ETA: 4 mins</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Solutions -->
+    <section class="solutions" id="solutions">
+        <h2>Built for Critical Human Support</h2>
+
+        <div class="solution-grid">
+
+            <div class="solution-card">
+                <div class="card-icon medical"></div>
+                <h3>Medical Response</h3>
+                <p>Immediate local support coordination for urgent healthcare assistance.</p>
+            </div>
+
+            <div class="solution-card">
+                <div class="card-icon logistics"></div>
+                <h3>Emergency Logistics</h3>
+                <p>Fast transport and supply delivery through distributed volunteer routing.</p>
+            </div>
+
+            <div class="solution-card">
+                <div class="card-icon shelter"></div>
+                <h3>Shelter Assistance</h3>
+                <p>Instant access to temporary support infrastructure and safe spaces.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Request -->
+    <section class="request-zone" id="request">
+
+        <div class="request-panel">
+
+            <div class="request-left">
+                <h2>Submit a Support Request</h2>
+                <p>
+                    Intelligent routing ensures your request reaches
+                    the nearest verified responders instantly.
+                </p>
+            </div>
+
+            <form id="helpForm" class="request-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+
+                <select required>
+                    <option>Select Request Type</option>
+                    <option>Medical</option>
+                    <option>Food</option>
+                    <option>Transport</option>
+                    <option>Shelter</option>
+                </select>
+
+                <textarea placeholder="Describe your requirement..." rows="5"></textarea>
+
+                <button type="submit">Submit Request</button>
+                <p id="formMsg"></p>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- Impact -->
+    <section class="impact" id="impact">
+
+        <h2>Measured Community Impact</h2>
+
+        <div class="impact-showcase">
+
+            <div class="impact-box large">
+                <h3>98.7%</h3>
+                <span>Successful Match Completion</span>
+            </div>
+
+            <div class="impact-box">
+                <h3>4.2 Min</h3>
+                <span>Average Response Time</span>
+            </div>
+
+            <div class="impact-box">
+                <h3>24/7</h3>
+                <span>Platform Availability</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">
+            <div class="brand-logo">
+                <div class="logo-ring"></div>
+                <div class="logo-core"></div>
+            </div>
+            HelpConnect
+        </div>
+
+        <p>Intelligent Community Assistance Infrastructure</p>
+        <span>© 2026 Baavya Medharamitla</span>
+    </footer>
 
 <script src="script.js"></script>
+
 </body>
 </html>
