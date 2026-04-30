@@ -1,159 +1,105 @@
-// ---------------- THEME TOGGLE ----------------
+// THEME TOGGLE
 
 const body = document.body;
 const toggle = document.getElementById("themeToggle");
+const circle = document.querySelector(".toggle-circle");
 
 const savedTheme = localStorage.getItem("theme");
 
-if (savedTheme) {
+if(savedTheme){
     body.className = savedTheme;
-} else {
-    body.className = "dark";
 }
 
+updateToggle();
+
 toggle.addEventListener("click", () => {
-    if (body.classList.contains("dark")) {
+    if(body.classList.contains("dark")){
         body.classList.remove("dark");
         body.classList.add("light");
-        localStorage.setItem("theme", "light");
+        localStorage.setItem("theme","light");
     } else {
         body.classList.remove("light");
         body.classList.add("dark");
-        localStorage.setItem("theme", "dark");
+        localStorage.setItem("theme","dark");
     }
+
+    updateToggle();
 });
 
+function updateToggle(){
+    if(body.classList.contains("light")){
+        circle.style.transform = "translateX(28px)";
+    } else {
+        circle.style.transform = "translateX(0px)";
+    }
+}
 
-// ---------------- VOLUNTEERS ----------------
+
+// SCROLL TO REQUEST
+
+function scrollToRequest(){
+    document.getElementById("request").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+// VOLUNTEERS
 
 const volunteers = [
-    {
-        name: "Aarav Sharma",
-        role: "Medical Responder",
-        city: "Chennai"
-    },
-    {
-        name: "Priya Nair",
-        role: "Food Assistance",
-        city: "Bangalore"
-    },
-    {
-        name: "Rahul Menon",
-        role: "Transport Support",
-        city: "Hyderabad"
-    },
-    {
-        name: "Meera Iyer",
-        role: "Shelter Coordination",
-        city: "Chennai"
-    },
-    {
-        name: "Arjun Patel",
-        role: "Emergency Logistics",
-        city: "Mumbai"
-    },
-    {
-        name: "Sneha Verma",
-        role: "Rapid Response",
-        city: "Delhi"
-    }
+    {name:"Arjun Mehta", role:"Medical Response"},
+    {name:"Priya Sharma", role:"Food Support"},
+    {name:"Ravi Nair", role:"Transport Assistance"},
+    {name:"Sneha Iyer", role:"Emergency Shelter"},
+    {name:"Karthik Rao", role:"Crisis Logistics"},
+    {name:"Meera Das", role:"Rapid Assistance"}
 ];
 
 const volunteerGrid = document.getElementById("volunteerGrid");
 
-function renderVolunteers() {
-    volunteerGrid.innerHTML = "";
+volunteers.forEach(v => {
+    const card = document.createElement("div");
+    card.className = "feature-card";
 
-    volunteers.forEach((volunteer, index) => {
-        const card = document.createElement("div");
+    card.innerHTML = `
+        <h3>${v.name}</h3>
+        <p>${v.role}</p>
+    `;
 
-        card.classList.add("solution-card");
-        card.style.animationDelay = `${index * 0.15}s`;
-
-        card.innerHTML = `
-            <h3>${volunteer.name}</h3>
-            <p>${volunteer.role}</p>
-            <span>${volunteer.city}</span>
-        `;
-
-        volunteerGrid.appendChild(card);
-    });
-}
-
-renderVolunteers();
+    volunteerGrid.appendChild(card);
+});
 
 
-// ---------------- FORM ----------------
+// FORM SUBMISSION
 
 const helpForm = document.getElementById("helpForm");
-const formMsg = document.getElementById("formMsg");
+const notification = document.getElementById("notification");
 
-helpForm.addEventListener("submit", function (e) {
+helpForm.addEventListener("submit", function(e){
     e.preventDefault();
 
-    formMsg.textContent = "Request submitted successfully. A responder is being matched.";
-    formMsg.style.color = "#10b981";
-    formMsg.style.marginTop = "14px";
+    notification.style.display = "block";
+    notification.style.background = "rgba(16,185,129,.18)";
+    notification.style.border = "1px solid rgba(16,185,129,.35)";
+    notification.style.color = "#10b981";
+    notification.innerHTML =
+        "Request submitted successfully. Matching nearest responder...";
 
     helpForm.reset();
 
     setTimeout(() => {
-        formMsg.textContent = "";
-    }, 5000);
+        notification.style.display = "none";
+    },5000);
 });
 
 
-// ---------------- SCROLL REVEAL ----------------
+// DASHBOARD TILT
 
-const revealElements = document.querySelectorAll(
-    ".solution-card, .impact-box, .request-panel, .dashboard-shell"
-);
+const dashboard = document.querySelector(".live-dashboard");
 
-function revealOnScroll() {
-    revealElements.forEach((el) => {
-        const top = el.getBoundingClientRect().top;
-
-        if (top < window.innerHeight - 80) {
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-        }
-    });
-}
-
-revealElements.forEach((el) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(50px)";
-    el.style.transition = "all 0.8s ease";
-});
-
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-
-
-// ---------------- PARALLAX ----------------
-
-document.addEventListener("mousemove", (e) => {
-    const orbs = document.querySelectorAll(".orb");
-
-    const x = e.clientX / window.innerWidth;
-    const y = e.clientY / window.innerHeight;
-
-    orbs.forEach((orb, index) => {
-        const moveX = (x - 0.5) * (index + 1) * 30;
-        const moveY = (y - 0.5) * (index + 1) * 30;
-
-        orb.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    });
-});
-
-
-// ---------------- HERO FLOAT ----------------
-
-const dashboard = document.querySelector(".dashboard-shell");
-
-document.addEventListener("mousemove", (e) => {
-    const x = (window.innerWidth / 2 - e.pageX) / 40;
-    const y = (window.innerHeight / 2 - e.pageY) / 40;
+document.addEventListener("mousemove", e => {
+    const x = (window.innerWidth/2 - e.pageX)/35;
+    const y = (window.innerHeight/2 - e.pageY)/35;
 
     dashboard.style.transform = `
         rotateY(${x}deg)
@@ -162,28 +108,75 @@ document.addEventListener("mousemove", (e) => {
 });
 
 
-// ---------------- BUTTON INTERACTIONS ----------------
+// REVEAL ON SCROLL
 
-const buttons = document.querySelectorAll("button");
+const cards = document.querySelectorAll(
+    ".feature-card,.request-card,.live-dashboard"
+);
 
-buttons.forEach(button => {
-    button.addEventListener("mouseenter", () => {
-        button.style.transform = "scale(1.06)";
-    });
-
-    button.addEventListener("mouseleave", () => {
-        button.style.transform = "scale(1)";
-    });
+cards.forEach(card=>{
+    card.style.opacity="0";
+    card.style.transform="translateY(50px)";
 });
 
+function revealCards(){
+    cards.forEach(card=>{
+        const top = card.getBoundingClientRect().top;
 
-// ---------------- LOADER EFFECT ----------------
+        if(top < window.innerHeight - 80){
+            card.style.opacity="1";
+            card.style.transform="translateY(0)";
+            card.style.transition="all .9s ease";
+        }
+    });
+}
 
-window.addEventListener("load", () => {
-    document.body.style.opacity = "0";
+window.addEventListener("scroll",revealCards);
+revealCards();
 
-    setTimeout(() => {
-        document.body.style.transition = "opacity 1s ease";
-        document.body.style.opacity = "1";
-    }, 100);
+
+// PARTICLE BACKGROUND
+
+const canvas = document.getElementById("particleCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<80;i++){
+    particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        r:Math.random()*2+1,
+        dx:(Math.random()-0.5)*0.5,
+        dy:(Math.random()-0.5)*0.5
+    });
+}
+
+function animateParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle="rgba(79,140,255,.45)";
+        ctx.fill();
+
+        p.x+=p.dx;
+        p.y+=p.dy;
+
+        if(p.x<0||p.x>canvas.width)p.dx*=-1;
+        if(p.y<0||p.y>canvas.height)p.dy*=-1;
+    });
+
+    requestAnimationFrame(animateParticles);
+}
+
+animateParticles();
+
+window.addEventListener("resize",()=>{
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
 });
