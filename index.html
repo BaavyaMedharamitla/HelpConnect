@@ -1,57 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="HelpConnect - Task 5 Final Optimized Web App" />
-  <title>HelpConnect | Task 5</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HelpConnect | Connecting Humanity</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="hero">
-    <h1>🤝 HelpConnect</h1>
-    <p>Connecting those in need with those who care.</p>
-    <a href="#request" class="cta">📬 Submit a Request</a>
-  </header>
+<div class="bg-animation"></div>
 
-  <!-- Main Content -->
-  <main>
+<nav class="navbar">
+  <div class="logo">🤝 HelpConnect</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#request">Request Help</a></li>
+    <li><a href="#volunteers">Volunteers</a></li>
+  </ul>
+</nav>
 
-    <!-- Help Request Form -->
-    <section id="request" class="section">
-      <h2>📬 Submit a Help Request</h2>
-      <form id="helpForm">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Describe your need..." rows="4" required></textarea>
-        <button type="submit">Submit</button>
-      </form>
-      <p id="formMsg" class="msg"></p>
-    </section>
+<header class="hero">
+  <div class="hero-content">
+    <h1>Connecting People. Delivering Hope.</h1>
+    <p>Bridging communities through instant support and volunteer action.</p>
+    <a href="#request" class="btn">Get Help Now</a>
+  </div>
+</header>
 
-    <!-- Volunteer Directory -->
-    <section class="section">
-      <h2>🦸 Meet the Volunteers</h2>
-      <div class="controls">
-        <label for="locationFilter">Filter by Location:</label>
-        <select id="locationFilter" onchange="filterVolunteers()">
-          <option value="all">All Locations</option>
-          <option value="chennai">Chennai</option>
-          <option value="bangalore">Bangalore</option>
-        </select>
-      </div>
-      <div id="volunteerGrid" class="grid"></div>
-    </section>
+<section class="stats">
+  <div class="stat-card">
+    <h2 id="requests">0</h2>
+    <p>Requests Solved</p>
+  </div>
+  <div class="stat-card">
+    <h2 id="volunteersCount">0</h2>
+    <p>Active Volunteers</p>
+  </div>
+  <div class="stat-card">
+    <h2 id="cities">0</h2>
+    <p>Cities Connected</p>
+  </div>
+</section>
 
-  </main>
+<section id="about" class="section">
+  <h2>Why HelpConnect?</h2>
+  <p>
+    HelpConnect empowers people to seek immediate support while connecting
+    them to volunteers ready to help.
+  </p>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 HelpConnect | Built by Baavya Medharamitla</p>
-  </footer>
+<section id="request" class="section glass">
+  <h2>Submit a Help Request</h2>
+  <form id="helpForm">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Describe your need..." required></textarea>
+    <button type="submit">Submit Request</button>
+  </form>
+  <p id="formMsg"></p>
+</section>
 
+<section id="volunteers" class="section">
+  <h2>Meet Our Volunteers</h2>
+
+  <select id="locationFilter">
+    <option value="all">All Locations</option>
+    <option value="Chennai">Chennai</option>
+    <option value="Bangalore">Bangalore</option>
+  </select>
+
+  <div id="volunteerGrid" class="grid"></div>
+</section>
+
+<footer>
+  <p>© 2026 HelpConnect | Built by Baavya Medharamitla</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
